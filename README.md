@@ -10,6 +10,6 @@ Basic stock application that shows the company profile , stock price , volume , 
 
 
 ## Basketball EDA
-A Basketball Stat explorer that shows all the stats for nba players from seasons (1950-2023). Web scrapes this data from the basketball reference website and allows for precise filtering based on teams , positions. Allows downloading the filtered data and shows top 10 players of the season based on different statistics (PPG, 3P%, and FG%). Also shows an intercorrelation heatmap.
+A Basketball Stat explorer that shows all the stats for nba players from seasons (1950-2023). Web scrapes this data from the basketball reference website and allows for precise filtering based on teams , positions. Allows downloading the filtered data and shows top 10 players of the season based on different statistics (PPG, 3P%, and FG%). Also has data visualization options like scatter plots and intercorrelation heatmaps.
 ![image](https://github.com/Yash-29-10-2003/streamlit-apps/assets/89728102/5f453ec2-da2f-4c9c-8515-cff1fd2baeae)
 
