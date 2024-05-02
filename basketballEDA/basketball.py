@@ -40,8 +40,8 @@ selected_pos = st.sidebar.multiselect('Position', unique_pos, unique_pos)
 
 # Filtering data
 df_selected_team = playerstats[(playerstats.Tm.isin(selected_team)) & (playerstats.Pos.isin(selected_pos))]  #only showing for teams and positions selected in sidebar
-st.header('Display Player Stats of Selected Team(s)')
-st.write('Data Dimension: ' + str(df_selected_team.shape[0]) + ' rows and ' + str(df_selected_team.shape[1]) + ' columns.')  #updates size of df based on selected teams 
+st.header('Player Stats :')
+st.write('Data Dimensions: ' + str(df_selected_team.shape[0]) + ' rows and ' + str(df_selected_team.shape[1]) + ' columns.')  #updates size of df based on selected teams 
 st.dataframe(df_selected_team)
 
 # Download NBA player stats data
@@ -84,7 +84,7 @@ with col3:
 
 # Heatmap
 if st.button('Intercorrelation Heatmap'):
-    st.header('Intercorrelation Matrix Heatmap')
+    st.header('Intercorrelation Heatmap Matrix ')
     df_selected_team.to_csv('output.csv',index=False)
     df = pd.read_csv('output.csv')
 
