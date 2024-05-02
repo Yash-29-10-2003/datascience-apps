@@ -6,12 +6,13 @@ import seaborn as sns
 import numpy as np
 
 st.title("NBA Stat Explorer")
+st.write("***")
 st.markdown("""
 This app performs simple webscraping for NBA stat data.
 * **Python libraries:** base64, pandas, streamlit
 * **Data source:** [Basketball-reference.com](https://www.basketball-reference.com/).
 """)
-
+st.write("***")
 #creating a sidebar in the streamlit webpage
 st.sidebar.header('User Input Features')
 selected_year = st.sidebar.selectbox('Year', list(reversed(range(1950,2024))))
@@ -23,8 +24,8 @@ def load_data(year):
     html = pd.read_html(url, header = 0)
     df = html[0]
     raw = df.drop(df[df.Age == 'Age'].index) # Deletes repeating headers in content
-    raw = raw.fillna(0)                 #filling empty values with 0
-    numeric_cols = ['G', 'PTS', '3P', '3PA', 'FG', 'FGA']
+    raw = raw.fillna(0)                      #filling empty values with 0
+    numeric_cols = ['Age','G', 'PTS', '3P', '3PA', 'FG', 'FGA','AST','STL','TRB','TOV','BLK','FTA']         #making sure numeric colums have numeric vals
     raw[numeric_cols] = raw[numeric_cols].apply(pd.to_numeric, errors='coerce')
     playerstats = raw.drop(['Rk'], axis=1)        #dropping rk column cuz its useless
     return playerstats
@@ -54,19 +55,21 @@ def filedownload(df):
 
 st.markdown(filedownload(df_selected_team), unsafe_allow_html=True)
 
+st.write("***")
+
 #Top 10 Leaderboard
-# Sort the DataFrame based on PPG, 3P%, and FG%
+# Sorting the DataFrame based on PPG, 3P%, and FG%
 top_10_ppg = df_selected_team.sort_values(by='PTS', ascending=False).head(10)
 top_10_3p = df_selected_team.sort_values(by='3P', ascending=False).head(10)
 top_10_fg = df_selected_team.sort_values(by='FG', ascending=False).head(10)
 
-# Display the leaderboards
+# Displaying the leaderboards
 st.header('Top 10 Leaderboard')
 
-# Create a columns layout
+# Columns layout
 col1, col2, col3 = st.columns(3)
 
-# Display each leaderboard in a separate column
+# Displaying each leaderboard in a separate column
 with col1:
     st.subheader('Points Per Game (PPG)')
     ppg_text = '\n'.join([f"{name}: {score}" for name, score in zip(top_10_ppg['Player'], top_10_ppg['PTS'])])
@@ -82,6 +85,114 @@ with col3:
     fg_text = '\n'.join([f"{name}: {score}" for name, score in zip(top_10_fg['Player'], top_10_fg['FG%'])])
     st.text(fg_text)
 
+st.write("***")
+
+#Attribute based scatters
+st.header('Attribute based scatters :')
+selected_option = st.selectbox(
+    'Select an attribute to get the scatter of :',
+    ('Points','Assists','Steals','Rebounds','Turnovers','Blocks','Free-Throw Attempts')
+)
+#ppg scatter
+if selected_option == "Points":
+    st.markdown('### PPG Scatter (15+)')
+    plt.figure(figsize=(10, 6))
+    
+    # Filtering the DataFrame to include only players with points above 15
+    df_filtered = df_selected_team[df_selected_team['PTS'] > 15]
+    plt.scatter(df_filtered.index, df_filtered['PTS'], color='red', alpha=0.5)  # Index represents player, PTS represents points
+    plt.title('15+ Points Scatter')
+    plt.xlabel('Player Index')
+    plt.ylabel('Points')
+    st.pyplot()
+    st.set_option('deprecation.showPyplotGlobalUse', False)
+
+#assist scatter
+if selected_option == "Assists":
+    st.markdown('### AST Scatter (15+)')
+    plt.figure(figsize=(10, 6))
+    
+    # Filtering the DataFrame to include only players with assists above 5
+    df_filtered = df_selected_team[df_selected_team['AST'] > 5]
+    plt.scatter(df_filtered.index, df_filtered['AST'], color='red', alpha=0.5) 
+    plt.title('5+ Assist Scatter')
+    plt.xlabel('Player Index')
+    plt.ylabel('Assists')
+    st.pyplot()
+    st.set_option('deprecation.showPyplotGlobalUse', False)
+
+#steals scatter
+if selected_option == "Steals":
+    st.markdown('### STL Scatter (1.1+)')
+    plt.figure(figsize=(10, 6))
+    
+    # Filtering the DataFrame to include only players with steals above 1.1
+    df_filtered = df_selected_team[df_selected_team['STL'] > 1.1]
+    plt.scatter(df_filtered.index, df_filtered['STL'], color='red', alpha=0.5) 
+    plt.title('1.1+ Steals Scatter')
+    plt.xlabel('Player Index')
+    plt.ylabel('Steals')
+    st.pyplot()
+    st.set_option('deprecation.showPyplotGlobalUse', False)
+
+#rebounds scatter
+if selected_option == "Rebounds":
+    st.markdown('### Rebounds Scatter (8+)')
+    plt.figure(figsize=(10, 6))
+    
+    # Filtering the DataFrame to include only players with over 8 rebounds
+    df_filtered = df_selected_team[df_selected_team['TRB'] > 8.0]
+    plt.scatter(df_filtered.index, df_filtered['TRB'], color='red', alpha=0.5) 
+    plt.title('8+ Rebounds Scatter')
+    plt.xlabel('Player Index')
+    plt.ylabel('Rebounds')
+    st.pyplot()
+    st.set_option('deprecation.showPyplotGlobalUse', False)
+
+#turnovers scatter
+if selected_option == "Turnovers":
+    st.markdown('### Turnovers Scatter (2.5+)')
+    plt.figure(figsize=(10, 6))
+    
+    # Filtering the DataFrame to include only players with over 2.5+ turnovers
+    df_filtered = df_selected_team[df_selected_team['TOV'] > 2.5]
+    plt.scatter(df_filtered.index, df_filtered['TOV'], color='red', alpha=0.5) 
+    plt.title('2.5+ Turnovers Scatter')
+    plt.xlabel('Player Index')
+    plt.ylabel('Turnovers')
+    st.pyplot()
+    st.set_option('deprecation.showPyplotGlobalUse', False)
+
+#blocks scatter
+if selected_option == "Blocks":
+    st.markdown('### Blocks Scatter (1.1+)')
+    plt.figure(figsize=(10, 6))
+    
+    # Filtering the DataFrame to include only players with 1.1+ blocks
+    df_filtered = df_selected_team[df_selected_team['BLK'] > 1.1]
+    plt.scatter(df_filtered.index, df_filtered['BLK'], color='red', alpha=0.5) 
+    plt.title('1.1+ Blocks Scatter')
+    plt.xlabel('Player Index')
+    plt.ylabel('Blocks')
+    st.pyplot()
+    st.set_option('deprecation.showPyplotGlobalUse', False)
+
+#FTA scatter
+if selected_option == "Free-Throw Attempts":
+    st.markdown('### Free-Throw Attempts (5+)')
+    plt.figure(figsize=(10, 6))
+    
+    # Filtering the DataFrame to include only players with 5+ freethrow attempts
+    df_filtered = df_selected_team[df_selected_team['FTA'] > 5]
+    plt.scatter(df_filtered.index, df_filtered['FTA'], color='red', alpha=0.5) 
+    plt.title('5+ Free-Throw Attempts')
+    plt.xlabel('Player Index')
+    plt.ylabel('Free-Throw Attempts')
+    st.pyplot()
+    st.set_option('deprecation.showPyplotGlobalUse', False)
+
+st.write("***")
+
 # Heatmap
 if st.button('Intercorrelation Heatmap'):
     st.header('Intercorrelation Heatmap Matrix ')
@@ -92,10 +203,10 @@ if st.button('Intercorrelation Heatmap'):
     non_numeric_columns = df.select_dtypes(exclude=['float64', 'int64']).columns
     numeric_df = df.drop(columns=non_numeric_columns)
 
-    # Calculate correlation for numeric columns
+    # Calculating correlation for numeric columns
     corr = numeric_df.corr()
 
-    # Create mask for upper triangle
+    # Creating mask for upper triangle
     mask = np.zeros_like(corr)
     mask[np.triu_indices_from(mask)] = True
     with sns.axes_style("white"):

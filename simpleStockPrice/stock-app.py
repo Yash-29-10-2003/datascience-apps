@@ -12,6 +12,7 @@ In this application you can study various informational and historical data abou
 
 user_input = st.text_input("Add ticker here (GOOGL , AAPL , etc.) : ")
 
+st.write("***")
 #https://towardsdatascience.com/how-to-get-stock-data-using-python-c0de1df17e75
 tickerSymbol = user_input
 tickerData = yf.Ticker(tickerSymbol)
@@ -28,6 +29,7 @@ st.markdown("""
     * **Market Cap:** ${:,}
 """.format(info['longName'], info['sector'], info['industry'], info['website'], info['website'], info['country'], info['marketCap']))
 
+st.write("***")
 #history function tells us about the historical data
 #period: the frequency at which to gather the data;
 #start: the date to start gathering the data.
@@ -45,11 +47,14 @@ st.write("""
          ## Stock Price
          """)
 st.line_chart(tickerDf.Close)
+st.write("***")
 
+#Volume traded
 st.write("""
          ## Volume Traded
          """)
 st.line_chart(tickerDf.Volume)
+st.write("***")
 
 #Balance Sheet
 balance_sheet = tickerData.balance_sheet
@@ -57,6 +62,7 @@ st.write("""
     ## Balance Sheet
 """)
 st.dataframe(balance_sheet)
+st.write("***")
 
 #Income Statement
 income_statement = tickerData.financials
@@ -64,6 +70,7 @@ st.write("""
     ## Income Statement
 """)
 st.dataframe(income_statement)
+st.write("***")
 
 #Cash Flow Statement
 cash_flow_statement = tickerData.cashflow
@@ -71,6 +78,7 @@ st.write("""
     ## Cash Flow Statement
 """)
 st.dataframe(cash_flow_statement)
+st.write("***")
 
 #Dividends if available
 dividends = tickerData.dividends
@@ -81,6 +89,7 @@ if not dividends.empty:
     st.write(dividends)
 else:
     st.write("No dividend data available.")
+st.write("***")
 
 #Options if available
 options = tickerData.options
@@ -91,7 +100,8 @@ if options:
     st.write(options)
 else:
     st.write("No options data available.")
-    
+st.write("***")
+
 #Upcoming Earnings
 earnings_calendar = tickerData.calendar
 earnings_df = pd.DataFrame(earnings_calendar)
@@ -99,6 +109,7 @@ st.write("""
     ## Upcoming Earnings Calendar
 """)
 st.write(earnings_df)
+st.write("***")
 
 #Recommendations
 recommendations = tickerData.recommendations
