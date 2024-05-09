@@ -42,4 +42,5 @@ In the penguine prediction app we generated pickle file after training the model
 ![image](https://github.com/Yash-29-10-2003/datascience-apps/assets/89728102/716cfdb8-b84d-4ac8-9742-cfa823210649)
 
 # Deployment
-Since these applications are follow along learning projects from yt i wont be deploying all of them , but ill be deploying the ones i feel like i have added enough of my own stuff to / changed enough from the original to either streamlit itself or other deployment platforms once ive finished all the planned applications.
+Links to deployed apps :
+Stock APP : https://stockinfo.streamlit.app/
