@@ -10,8 +10,8 @@ st.write("""
 In this application you can study various informational and historical data about any stock of your choice in a concise manner !
 """)
 
-user_input = "GOOGL"
-user_input = st.text_input("Add ticker here (GOOGL , AAPL , etc.) : ")
+default = "GOOGL"
+user_input = st.text_input("Add ticker here (GOOGL , AAPL , etc.) : " , default)
 
 st.write("***")
 #https://towardsdatascience.com/how-to-get-stock-data-using-python-c0de1df17e75
