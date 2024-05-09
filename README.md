@@ -20,7 +20,9 @@ A crypto EDA that scrapes data from https://coinmarketcap.com [Web scraper adapt
 
 ## Sales Dashboard
 This task/project was done to acquire the Quantium Software Enginnering Simulation Certification @ Forage. 
+
 All problem Statements @ [https://www.theforage.com/career-path/software-engineering/firms/quantium/simulations/software-engineering-j6ci]
+
 Certification of Completion @ [https://drive.google.com/file/d/1GKpYa8QMttSPqY8u-qn8NMbpC-4fWrxP/view?usp=drive_link]
 - Developed an interactive Dash application that enabled the client to assess the impact of price changes on sales and profitability.
 - Implemented a test suite to verify the Dash application is working and a bash script to automatically run the test suite.
