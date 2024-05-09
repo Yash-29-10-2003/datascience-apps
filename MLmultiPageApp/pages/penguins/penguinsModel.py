@@ -28,7 +28,7 @@ clf = RandomForestClassifier()
 clf.fit(X, Y)
 
 # Specifing absolute path for saving the model
-absolute_path = 'D:/Coding/datascience/MLmultiPageApp/pages/penguins/penguinsModel.pkl'
+absolute_path = 'MLmultiPageApp/pages/penguins/penguinsModel.pkl'
 
 import pickle
 # Saving the model
