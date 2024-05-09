@@ -43,4 +43,7 @@ In the penguine prediction app we generated pickle file after training the model
 
 # Deployment
 Links to deployed apps :
+
 Stock APP : https://stockinfo.streamlit.app/
+
+Basketball EDA APP : https://edabasketball.streamlit.app/
