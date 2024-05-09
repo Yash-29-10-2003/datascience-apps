@@ -29,6 +29,17 @@ Certification of Completion @ [https://drive.google.com/file/d/1GKpYa8QMttSPqY8u
 - Developed an intuitive user interface to make the application enjoyable and engaging for the client to interact with.
 ![image](https://github.com/Yash-29-10-2003/datascience-apps/assets/89728102/f03c40a6-e71f-4bbd-b630-8ce5dddb4dc1)
 
+## ML Multi Page app
+This application has 2 different ML regression models incorporated in it.
+- **Iris Prediction:** This model predicts the species of iris flowers based on sepal and petal measurements.
+- **Penguin Prediction:** This model predicts the species of penguins based on various features like flipper length, bill length, etc.
+
+In the iris prediction app we use the iris dataset via iris = datasets.load_iris()
+Users can select the Sepal and Petal length and widths for predicting the iris type using the random forest classifier.
+![image](https://github.com/Yash-29-10-2003/datascience-apps/assets/89728102/e7bec73b-e471-4a9f-b4e1-13cfdc6d9de4)
+
+In the penguine prediction app we generated pickle file after training the model on the cleaned penguins csv using Random Forest Classifier. Users can either input a csv file with their input vars as a dataframe or choose the values in the sidebar for the classification.
+![image](https://github.com/Yash-29-10-2003/datascience-apps/assets/89728102/716cfdb8-b84d-4ac8-9742-cfa823210649)
 
 # Deployment
 Since these applications are follow along learning projects from yt i wont be deploying all of them , but ill be deploying the ones i feel like i have added enough of my own stuff to / changed enough from the original to either streamlit itself or other deployment platforms once ive finished all the planned applications.
