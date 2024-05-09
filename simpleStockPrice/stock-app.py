@@ -10,7 +10,7 @@ st.write("""
 In this application you can study various informational and historical data about any stock of your choice in a concise manner !
 """)
 
-tickerSymbol = "GOOGL"
+user_input = "GOOGL"
 user_input = st.text_input("Add ticker here (GOOGL , AAPL , etc.) : ")
 
 st.write("***")
