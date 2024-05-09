@@ -1,5 +1,5 @@
 import pandas as pd
-penguins = pd.read_csv('D:\Coding\datascience\MLmultiPageApp\pages\penguins\penguins_cleaned.csv')
+penguins = pd.read_csv('MLmultiPageApp\pages\penguins\penguins_cleaned.csv')
 
 # Ordinal feature encoding
 # https://www.kaggle.com/pratik1120/penguin-dataset-eda-classification-and-clustering
