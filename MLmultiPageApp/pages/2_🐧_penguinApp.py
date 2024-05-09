@@ -84,5 +84,4 @@ with col1:
 with col2:
     st.subheader('Prediction Probability')
     st.write(prediction_proba)
-    
 
