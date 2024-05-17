@@ -47,3 +47,7 @@ Ive deployed some of the aforementioned apps as a test on streamlits own hosting
 Stock APP : https://stockinfo.streamlit.app/
 
 Basketball EDA APP : https://edabasketball.streamlit.app/
+
+CryptoEDA : https://cryptoeda.onrender.com/
+
+The cryptoEDA app can take upto a minute to load since Render puts web apps (on their free tier) not accessed for 15 minutes to sleep .
