@@ -4,4 +4,4 @@ pandas==2.2.2
 Pillow==10.3.0
 Requests==2.31.0
 streamlit==1.34.0
-~treamlit==1.33.0
+
